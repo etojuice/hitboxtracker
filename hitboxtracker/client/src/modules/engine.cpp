@@ -121,9 +121,15 @@ bool CEngine::Init(const char *szModuleName, const char *pszFile)
 		return false;
 	}
 
+	if (!(g_pEngfuncs = FindEngineFuncs()))
+	{
+		TraceLog("> %s: Not found EngineFuncs\n", __FUNCTION__);
+		return false;
+	}
+
 	if (!(pg_pClientUserMsgs = FindClientUserMsgs()))
 	{
-		TraceLog("> %s: Not found UserMsg\n", __FUNCTION__);
+		TraceLog("> %s: Not found UserMsgs\n", __FUNCTION__);
 		return false;
 	}
 
